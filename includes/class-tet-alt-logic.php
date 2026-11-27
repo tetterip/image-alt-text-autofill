@@ -113,13 +113,23 @@ class Tet_Alt_Logic {
 	}
 
 	/**
+	 * Removes HTML tags, including the contents of script and style (like wp_strip_all_tags(), without WordPress).
+	 *
+	 * @param string $text Text.
+	 */
+	private static function strip_html( string $text ): string {
+		$text = (string) preg_replace( '@<(script|style)[^>]*?>.*?</\\1>@si', '', $text );
+		return (string) preg_replace( '/<[^>]*>/', '', $text );
+	}
+
+	/**
 	 * Cleans text from a model or a template into a usable alt text.
 	 *
 	 * @param string $text Raw text.
 	 * @param int    $max  Maximum length in characters (0 = no limit).
 	 */
 	public static function sanitize_alt( string $text, int $max = 0 ): string {
-		$text = html_entity_decode( strip_tags( $text ), ENT_QUOTES | ENT_HTML5, 'UTF-8' );
+		$text = html_entity_decode( self::strip_html( $text ), ENT_QUOTES | ENT_HTML5, 'UTF-8' );
 		$text = trim( (string) preg_replace( '/\s+/u', ' ', $text ) );
 
 		// Labels and wrappers models sometimes add.

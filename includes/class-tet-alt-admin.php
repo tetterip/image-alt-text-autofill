@@ -231,23 +231,44 @@ class Tet_Alt_Admin {
 	 */
 	public static function query_ids( string $scope ): array {
 		global $wpdb;
-		$where = '';
+		$image = $wpdb->esc_like( 'image/' ) . '%';
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery -- run once when a bulk run starts; caching a one-off ID list gains nothing.
 		if ( 'missing' === $scope ) {
-			$where = "AND ( alt.meta_value IS NULL OR TRIM( alt.meta_value ) = '' )";
+			$ids = $wpdb->get_col(
+				$wpdb->prepare(
+					"SELECT p.ID FROM {$wpdb->posts} p
+					LEFT JOIN {$wpdb->postmeta} alt ON alt.post_id = p.ID AND alt.meta_key = '_wp_attachment_image_alt'
+					WHERE p.post_type = 'attachment' AND p.post_mime_type LIKE %s
+					AND ( alt.meta_value IS NULL OR TRIM( alt.meta_value ) = '' )
+					ORDER BY p.ID DESC LIMIT %d",
+					$image,
+					self::MAX_IDS
+				)
+			);
 		} elseif ( 'auto' === $scope ) {
-			$where = "AND ( alt.meta_value IS NULL OR TRIM( alt.meta_value ) = '' OR src.meta_value = 'template' )";
+			$ids = $wpdb->get_col(
+				$wpdb->prepare(
+					"SELECT p.ID FROM {$wpdb->posts} p
+					LEFT JOIN {$wpdb->postmeta} alt ON alt.post_id = p.ID AND alt.meta_key = '_wp_attachment_image_alt'
+					LEFT JOIN {$wpdb->postmeta} src ON src.post_id = p.ID AND src.meta_key = '_tet_alt_source'
+					WHERE p.post_type = 'attachment' AND p.post_mime_type LIKE %s
+					AND ( alt.meta_value IS NULL OR TRIM( alt.meta_value ) = '' OR src.meta_value = 'template' )
+					ORDER BY p.ID DESC LIMIT %d",
+					$image,
+					self::MAX_IDS
+				)
+			);
+		} else {
+			$ids = $wpdb->get_col(
+				$wpdb->prepare(
+					"SELECT p.ID FROM {$wpdb->posts} p
+					WHERE p.post_type = 'attachment' AND p.post_mime_type LIKE %s
+					ORDER BY p.ID DESC LIMIT %d",
+					$image,
+					self::MAX_IDS
+				)
+			);
 		}
-		// phpcs:disable WordPress.DB.DirectDatabaseQuery,WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $where is one of three fixed strings; run once per bulk start.
-		$ids = $wpdb->get_col(
-			$wpdb->prepare(
-				"SELECT p.ID FROM {$wpdb->posts} p
-				LEFT JOIN {$wpdb->postmeta} alt ON alt.post_id = p.ID AND alt.meta_key = '_wp_attachment_image_alt'
-				LEFT JOIN {$wpdb->postmeta} src ON src.post_id = p.ID AND src.meta_key = '_tet_alt_source'
-				WHERE p.post_type = 'attachment' AND p.post_mime_type LIKE 'image/%%' {$where}
-				ORDER BY p.ID DESC LIMIT %d",
-				self::MAX_IDS
-			)
-		);
 		// phpcs:enable
 		return array_map( 'intval', (array) $ids );
 	}

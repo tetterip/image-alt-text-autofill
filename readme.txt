@@ -1,5 +1,5 @@
 === Image Alt Text Autofill ===
-Contributors: tetterip
+Contributors: tetterismixalis
 Tags: alt text, accessibility, images, seo, ai
 Requires at least: 6.2
 Tested up to: 7.1
@@ -24,7 +24,13 @@ Alt text describes an image for people who use screen readers and helps search e
 
 = External services =
 
-Only when you choose the AI option: each image being described (JPEG, PNG, GIF or WebP, normally the "large" size) is sent with the site name and, if enabled, the title of its post or product, to the AI provider you configured in WordPress under Settings → Connectors (for example Anthropic, Google or OpenAI). That provider's terms and privacy policy apply. Without the AI option, no data leaves your site.
+Only when you choose the AI option: each image being described (JPEG, PNG, GIF or WebP, normally the "large" size) is sent with the site name and, if enabled, the title of its post or product, to the AI provider you configured in WordPress under Settings → Connectors (for example Anthropic, Google or OpenAI). That provider's terms and privacy policy apply:
+
+* Anthropic: [terms](https://www.anthropic.com/legal/commercial-terms), [privacy policy](https://www.anthropic.com/legal/privacy)
+* Google (Gemini API): [terms](https://ai.google.dev/gemini-api/terms), [privacy policy](https://policies.google.com/privacy)
+* OpenAI: [terms](https://openai.com/policies/business-terms/), [privacy policy](https://openai.com/policies/privacy-policy/)
+
+This plugin does not contact any service itself; the request goes through WordPress's AI Client and the provider plugin you installed. Without the AI option, no data leaves your site.
 
 == Frequently Asked Questions ==
 

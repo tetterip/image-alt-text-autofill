@@ -39,7 +39,9 @@ jobs:
             echo "main=$main"
             echo "version=$(field 'Version')"
             echo "min_php=$min_php"
-            echo "wp_tested=$(field 'Tested up to')"
+            wp_tested=$(field 'Tested up to')
+            if [ -z "$wp_tested" ] && [ -f readme.txt ]; then wp_tested=$(grep -m1 -E '^Tested up to:' readme.txt | sed -E 's/^[^:]*:[[:space:]]*//; s/[[:space:]]*$//'); fi
+            echo "wp_tested=$wp_tested"
             echo "wc_tested=$(field 'WC tested up to')"
             echo "requires_plugins=$(field 'Requires Plugins')"
           } >> "$GITHUB_OUTPUT"
