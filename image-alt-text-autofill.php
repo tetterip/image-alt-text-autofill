@@ -23,6 +23,18 @@ define( 'TET_ALT_VERSION', get_file_data( __FILE__, array( 'Version' => 'Version
 define( 'TET_ALT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TET_ALT_URL', plugin_dir_url( __FILE__ ) );
 
+/**
+ * Version string for an asset: plugin version plus the file's modification time, so browsers fetch the new
+ * file after an update even when the plugin version stayed the same (e.g. a reinstalled zip).
+ *
+ * @param string $rel Path relative to the plugin folder.
+ */
+function tet_alt_asset_ver( string $rel ): string {
+	$file = TET_ALT_PATH . $rel;
+	$time = file_exists( $file ) ? filemtime( $file ) : false;
+	return TET_ALT_VERSION . ( $time ? '.' . $time : '' );
+}
+
 require_once TET_ALT_PATH . 'includes/class-tet-alt-logic.php';
 require_once TET_ALT_PATH . 'includes/class-tet-alt-settings.php';
 require_once TET_ALT_PATH . 'includes/class-tet-alt-ai.php';

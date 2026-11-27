@@ -56,8 +56,8 @@ class Tet_Alt_Admin {
 		if ( $hook !== self::$hook ) {
 			return;
 		}
-		wp_enqueue_style( 'tet-alt-admin', TET_ALT_URL . 'assets/css/admin.css', array(), TET_ALT_VERSION );
-		wp_enqueue_script( 'tet-alt-bulk', TET_ALT_URL . 'assets/js/bulk.js', array(), TET_ALT_VERSION, true );
+		wp_enqueue_style( 'tet-alt-admin', TET_ALT_URL . 'assets/css/admin.css', array(), tet_alt_asset_ver( 'assets/css/admin.css' ) );
+		wp_enqueue_script( 'tet-alt-bulk', TET_ALT_URL . 'assets/js/bulk.js', array(), tet_alt_asset_ver( 'assets/js/bulk.js' ), true );
 		wp_localize_script(
 			'tet-alt-bulk',
 			'tetAltBulk',
