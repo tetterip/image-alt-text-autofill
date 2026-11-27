@@ -1,4 +1,4 @@
-/* Smart Alt Text: "Generate" buttons in the Media Library list, the media modal and the attachment edit screen. */
+/* Image Alt Text Autofill: "Generate" buttons in the Media Library list, the media modal and the attachment edit screen. */
 ( function () {
 	'use strict';
 	var cfg = window.tetAltMedia;

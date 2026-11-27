@@ -5,7 +5,7 @@
  * The site owner picks the provider and enters its key in Settings → Connectors;
  * this plugin never sees or stores a key.
  *
- * @package Tet_Smart_Alt_Text
+ * @package Image_Alt_Text_Autofill
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -65,7 +65,7 @@ class Tet_Alt_AI {
 	 */
 	public static function describe( int $id ) {
 		if ( ! self::available() ) {
-			return new WP_Error( 'tet_alt_ai_unavailable', __( 'No AI provider that can read images is set up.', 'tet-smart-alt-text' ) );
+			return new WP_Error( 'tet_alt_ai_unavailable', __( 'No AI provider that can read images is set up.', 'image-alt-text-autofill' ) );
 		}
 		$image = self::image_data( $id );
 		if ( is_wp_error( $image ) ) {
@@ -100,7 +100,7 @@ class Tet_Alt_AI {
 		}
 		$alt = Tet_Alt_Logic::sanitize_alt( (string) $text, $max );
 		if ( '' === $alt ) {
-			return new WP_Error( 'tet_alt_ai_empty', __( 'The AI returned no description.', 'tet-smart-alt-text' ) );
+			return new WP_Error( 'tet_alt_ai_empty', __( 'The AI returned no description.', 'image-alt-text-autofill' ) );
 		}
 		return $alt;
 	}
@@ -186,20 +186,20 @@ class Tet_Alt_AI {
 	public static function image_data( int $id ) {
 		$file = self::pick_file( $id );
 		if ( ! $file ) {
-			return new WP_Error( 'tet_alt_no_file', __( 'The image file was not found.', 'tet-smart-alt-text' ) );
+			return new WP_Error( 'tet_alt_no_file', __( 'The image file was not found.', 'image-alt-text-autofill' ) );
 		}
 		$type = wp_check_filetype( $file );
 		$mime = (string) ( $type['type'] ?? '' );
 		if ( ! in_array( $mime, self::MIME_TYPES, true ) ) {
-			return new WP_Error( 'tet_alt_unsupported', __( 'This image type cannot be sent to the AI (only JPEG, PNG, GIF and WebP).', 'tet-smart-alt-text' ) );
+			return new WP_Error( 'tet_alt_unsupported', __( 'This image type cannot be sent to the AI (only JPEG, PNG, GIF and WebP).', 'image-alt-text-autofill' ) );
 		}
 		$size = (int) filesize( $file );
 		if ( $size <= 0 || $size > self::MAX_BYTES ) {
-			return new WP_Error( 'tet_alt_too_big', __( 'The image is too large to send to the AI.', 'tet-smart-alt-text' ) );
+			return new WP_Error( 'tet_alt_too_big', __( 'The image is too large to send to the AI.', 'image-alt-text-autofill' ) );
 		}
 		$bytes = file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- local file.
 		if ( false === $bytes ) {
-			return new WP_Error( 'tet_alt_no_file', __( 'The image file was not found.', 'tet-smart-alt-text' ) );
+			return new WP_Error( 'tet_alt_no_file', __( 'The image file was not found.', 'image-alt-text-autofill' ) );
 		}
 		return array(
 			'data_uri' => 'data:' . $mime . ';base64,' . base64_encode( $bytes ), // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode -- image upload to the AI provider.

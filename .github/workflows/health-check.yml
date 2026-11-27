@@ -1,5 +1,6 @@
 # Security + compatibility + performance health check for a ttrp.gr plugin (WooCommerce or plain WordPress).
-# Source of truth: plugins.ttrp.gr-autoupdater/client/health-check.yml (synced by client/sync-health-check.sh).
+# Based on plugins.ttrp.gr-autoupdater/client/health-check.yml, with the WooCommerce row skipped for plain plugins.
+# Not synced from there: this plugin is distributed through WordPress.org, not plugins.ttrp.gr.
 # Runs on the 1st and 16th of every month, on pushes to the default branch and by hand.
 # Results go to one GitHub issue labelled "health-check" (updated each run, closed when clean).
 # The suite's Claude routine reads that issue and opens a PR with fixes and header bumps.

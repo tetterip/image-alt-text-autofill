@@ -1,8 +1,8 @@
 <?php
 /**
- * WP-CLI: wp smart-alt …
+ * WP-CLI: wp alt-autofill …
  *
- * @package Tet_Smart_Alt_Text
+ * @package Image_Alt_Text_Autofill
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -34,9 +34,9 @@ class Tet_Alt_CLI {
 	 *
 	 * ## EXAMPLES
 	 *
-	 *     wp smart-alt generate --dry-run --limit=10
-	 *     wp smart-alt generate --source=ai --scope=auto
-	 *     wp smart-alt generate 123 456 --scope=all
+	 *     wp alt-autofill generate --dry-run --limit=10
+	 *     wp alt-autofill generate --source=ai --scope=auto
+	 *     wp alt-autofill generate 123 456 --scope=all
 	 *
 	 * @param array $args       IDs.
 	 * @param array $assoc_args Options.

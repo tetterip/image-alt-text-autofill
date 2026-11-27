@@ -1,11 +1,11 @@
-# Contributing to Smart Alt Text
+# Contributing to Image Alt Text Autofill
 
 Thanks for helping. Bug reports, ideas, translations and pull requests are all welcome.
 
 ## Before you start
 
 - **Security issues:** please don't open a public issue. Email **info@ttrp.gr** (see [SECURITY.md](../SECURITY.md)).
-- **Bugs:** [open a bug report](https://github.com/tetterip/tet-smart-alt-text/issues/new?template=bug_report.yml) with the plugin, WordPress and PHP
+- **Bugs:** [open a bug report](https://github.com/tetterip/image-alt-text-autofill/issues/new?template=bug_report.yml) with the plugin, WordPress and PHP
   versions and the steps to reproduce it.
 - **Bigger changes:** open an issue first, so we can agree on the approach before you spend time on it.
 
@@ -21,10 +21,8 @@ to run it.
 - Follow the [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/).
 - Escape all output (`esc_html`, `esc_attr`, `esc_url`, `wp_kses`), sanitise all input, and check a nonce and a
   capability on every form and AJAX action.
-- Wrap every user-facing string in `__()` / `esc_html__()` with the text domain `tet-smart-alt-text`. Never build a translatable
+- Wrap every user-facing string in `__()` / `esc_html__()` with the text domain `image-alt-text-autofill`. Never build a translatable
   string by concatenation; use `sprintf()` with a `/* translators: */` comment.
-- **Don't edit `ttrp-common/`.** It is a copy of a shared library that is synced from another repository, and any
-  change there is overwritten.
 
 ## Translations
 

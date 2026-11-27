@@ -2,7 +2,7 @@
 /**
  * Tests for Tet_Alt_Logic.
  *
- * @package Tet_Smart_Alt_Text
+ * @package Image_Alt_Text_Autofill
  */
 
 $l = 'Tet_Alt_Logic';

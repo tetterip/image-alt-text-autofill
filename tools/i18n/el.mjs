@@ -1,8 +1,9 @@
-// Greek translations for tet-smart-alt-text. Key: msgid, or "context\u0004msgid". Plurals: [singular, plural].
+// Greek translations for image-alt-text-autofill. Key: msgid, or "context\u0004msgid". Plurals: [singular, plural].
 // Terms: alt text = «εναλλακτικό κείμενο (alt)», image = «εικόνα», Media Library = «Βιβλιοθήκη πολυμέσων».
 export default {
   // Admin page.
   'Settings': 'Ρυθμίσεις',
+  'Alt Text': 'Εναλλακτικό κείμενο',
   'Bulk generate': 'Μαζική δημιουργία',
   'Images': 'Εικόνες',
   'Without alt text': 'Χωρίς alt',
@@ -41,7 +42,7 @@ export default {
   'You are not allowed to do this.': 'Δεν έχετε δικαίωμα για αυτή την ενέργεια.',
 
   // Privacy policy guide.
-  'Smart Alt Text writes descriptions (alt text) for the images in the media library, for visitors who use screen readers and for search engines.': 'Το Smart Alt Text γράφει περιγραφές (εναλλακτικό κείμενο, alt) για τις εικόνες της βιβλιοθήκης πολυμέσων, για επισκέπτες που χρησιμοποιούν αναγνώστη οθόνης και για τις μηχανές αναζήτησης.',
+  'Image Alt Text Autofill writes descriptions (alt text) for the images in the media library, for visitors who use screen readers and for search engines.': 'Το Image Alt Text Autofill γράφει περιγραφές (εναλλακτικό κείμενο, alt) για τις εικόνες της βιβλιοθήκης πολυμέσων, για επισκέπτες που χρησιμοποιούν αναγνώστη οθόνης και για τις μηχανές αναζήτησης.',
   'Without AI, it works only with data already on this site (file names and titles) and sends nothing anywhere.': 'Χωρίς AI χρησιμοποιεί μόνο στοιχεία που υπάρχουν ήδη στον ιστότοπο (ονόματα αρχείων και τίτλους) και δεν στέλνει τίποτα πουθενά.',
   "If AI descriptions are turned on, each image that gets a description is sent, with the site name and the title of the page or product it belongs to, to the AI provider the site owner set up in WordPress (Settings → Connectors). If an image shows people, that may be personal data; the provider's own privacy policy applies to what it receives. Visitors' data is never sent.": 'Αν είναι ενεργές οι περιγραφές με AI, κάθε εικόνα που περιγράφεται στέλνεται, μαζί με το όνομα του ιστότοπου και τον τίτλο της σελίδας ή του προϊόντος όπου ανήκει, στον πάροχο AI που έχει ορίσει ο διαχειριστής στο WordPress (Ρυθμίσεις → Connectors). Αν μια εικόνα δείχνει πρόσωπα, αυτό μπορεί να είναι προσωπικά δεδομένα· για όσα λαμβάνει ο πάροχος ισχύει η δική του πολιτική απορρήτου. Δεδομένα επισκεπτών δεν στέλνονται ποτέ.',
 

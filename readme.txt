@@ -1,4 +1,4 @@
-=== Smart Alt Text ===
+=== Image Alt Text Autofill ===
 Contributors: tetterip
 Tags: alt text, accessibility, images, seo, ai
 Requires at least: 6.2
@@ -12,7 +12,7 @@ Writes missing image alt text: from file names and titles, or with AI through th
 
 == Description ==
 
-Alt text describes an image for people who use screen readers and helps search engines understand it. Smart Alt Text fills in the alt text your images are missing.
+Alt text describes an image for people who use screen readers and helps search engines understand it. Image Alt Text Autofill fills in the alt text your images are missing.
 
 * **AI descriptions (WordPress 7.0+)** through the AI Client built into WordPress. Choose a provider and enter its key in Settings → Connectors; this plugin never handles keys. Alt texts are written in the site language, short, with the post or product title as optional context.
 * **Template, no external service:** `{filename}` turns `red-leather_sofa-2-1024x768.jpg` into "Red leather sofa" and ignores camera names such as `IMG_1234`. Also `{title}`, `{caption}`, `{parent}` and `{site}`.
@@ -20,7 +20,7 @@ Alt text describes an image for people who use screen readers and helps search e
 * **On the site:** images shown without alt text get a template one in the output (nothing saved).
 * **Bulk tool** with preview for existing images; alt texts written by people are only replaced if you ask, and the previous text is kept.
 * **Media Library** column, Generate buttons, bulk action and a button in the media modal.
-* **WP-CLI:** `wp smart-alt generate`, `wp smart-alt stats`.
+* **WP-CLI:** `wp alt-autofill generate`, `wp alt-autofill stats`.
 
 = External services =
 

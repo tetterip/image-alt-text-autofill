@@ -3,7 +3,7 @@
  * Zero-dependency test runner: php tests/run.php (from the plugin root).
  * Loads only the pure classes, no WordPress needed.
  *
- * @package Tet_Smart_Alt_Text
+ * @package Image_Alt_Text_Autofill
  */
 
 define( 'ABSPATH', __DIR__ . '/' );

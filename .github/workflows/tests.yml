@@ -18,6 +18,6 @@ jobs:
           php-version: ${{ matrix.php }}
           coverage: none
       - name: Lint
-        run: find . -name '*.php' -not -path './ttrp-common/*' -print0 | xargs -0 -n1 php -l
+        run: find . -name '*.php' -print0 | xargs -0 -n1 php -l
       - name: Unit tests
         run: php tests/run.php

@@ -2,23 +2,22 @@
   <img src=".github/icon.svg" width="112" height="112" alt="">
 </p>
 
-<h1 align="center">Smart Alt Text</h1>
+<h1 align="center">Image Alt Text Autofill</h1>
 
 <p align="center"><strong>Writes missing image alt text for you: from file names and titles, or with AI through the provider you set up in WordPress.</strong></p>
 
 <p align="center">
-  <a href="https://github.com/tetterip/tet-smart-alt-text/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/tetterip/tet-smart-alt-text?label=release&color=7c3aed"></a>
-  <a href="LICENSE"><img alt="License" src="https://img.shields.io/github/license/tetterip/tet-smart-alt-text?color=2563eb"></a>
+  <a href="https://github.com/tetterip/image-alt-text-autofill/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/tetterip/image-alt-text-autofill?label=release&color=7c3aed"></a>
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/github/license/tetterip/image-alt-text-autofill?color=2563eb"></a>
   <img alt="WordPress 6.2+ (AI: 7.0+)" src="https://img.shields.io/badge/WordPress-6.2%2B%20%C2%B7%20AI%207.0%2B-21759B?logo=wordpress&logoColor=white">
   <img alt="PHP 7.4+" src="https://img.shields.io/badge/PHP-7.4%2B-777BB4?logo=php&logoColor=white">
-  <a href="https://github.com/tetterip/tet-smart-alt-text/actions/workflows/tests.yml"><img alt="Tests" src="https://github.com/tetterip/tet-smart-alt-text/actions/workflows/tests.yml/badge.svg"></a>
+  <a href="https://github.com/tetterip/image-alt-text-autofill/actions/workflows/tests.yml"><img alt="Tests" src="https://github.com/tetterip/image-alt-text-autofill/actions/workflows/tests.yml/badge.svg"></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/tetterip/tet-smart-alt-text/releases/latest"><strong>Download</strong></a> ·
-  <a href="https://plugins.ttrp.gr/">plugins.ttrp.gr</a> ·
+  <a href="https://github.com/tetterip/image-alt-text-autofill/releases/latest"><strong>Download</strong></a> ·
   <a href="CHANGELOG.md">Changelog</a> ·
-  <a href="https://github.com/tetterip/tet-smart-alt-text/issues/new/choose">Report a bug</a> ·
+  <a href="https://github.com/tetterip/image-alt-text-autofill/issues/new/choose">Report a bug</a> ·
   <a href=".github/CONTRIBUTING.md">Contributing</a>
 </p>
 
@@ -29,7 +28,7 @@
 ## What it does
 
 Alt text describes an image for people who use screen readers, and helps search engines understand it. Most media
-libraries are full of images without it. Smart Alt Text fills the gaps, on any WordPress site (WooCommerce optional).
+libraries are full of images without it. Image Alt Text Autofill fills the gaps, on any WordPress site (WooCommerce optional).
 
 - **AI descriptions (WordPress 7.0+).** Uses the AI Client built into WordPress: you pick a provider (Anthropic,
   Google, OpenAI…) and enter its key once in **Settings → Connectors**. The plugin never sees or stores a key. Alt texts
@@ -40,11 +39,11 @@ libraries are full of images without it. Smart Alt Text fills the gaps, on any W
   `{site}`, e.g. `{filename} - {site}`. Also the fallback when AI is off or fails.
 - **On upload.** New images get their alt text as they are uploaded, so it is already there when the editor inserts them.
 - **On the site.** Images shown without alt text get a template one in the page output (nothing is saved, no AI).
-- **Bulk.** **ttrp.gr Plugins → Smart Alt Text** fixes existing images in batches, with a preview, and can upgrade
+- **Bulk.** **Media → Alt Text** fixes existing images in batches, with a preview, and can upgrade
   automatic (template) alt texts to AI ones. Alt texts written by people are only replaced if you ask, and the old text is kept.
 - **Media Library.** An “Alt text” column with a Generate button, a bulk action, and a “Generate alt text” button in the
   media modal.
-- **WP-CLI.** `wp smart-alt generate [--source=ai] [--scope=missing|auto|all] [--dry-run] [--limit=N]`, `wp smart-alt stats`.
+- **WP-CLI.** `wp alt-autofill generate [--source=ai] [--scope=missing|auto|all] [--dry-run] [--limit=N]`, `wp alt-autofill stats`.
 
 ## Privacy
 
@@ -52,8 +51,7 @@ Without AI, nothing leaves the site. With AI, each image that gets described is 
 its post or product, to the AI provider the site owner set up in WordPress. Visitors' data is never sent. A suggested
 paragraph is added to **Settings → Privacy → Policy Guide**.
 
-Like every ttrp.gr plugin, this build checks plugins.ttrp.gr for updates (it sends the site address, WordPress
-version and the installed ttrp.gr plugin versions). See the [privacy policy](https://plugins.ttrp.gr/?page=privacy).
+The plugin itself contacts no other server: updates come from WordPress.org like any other plugin.
 
 ## Developers
 

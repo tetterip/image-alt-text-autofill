@@ -1,21 +1,20 @@
 <?php
 /**
- * Plugin Name:       Smart Alt Text
- * Plugin URI:        https://github.com/tetterip/tet-smart-alt-text
+ * Plugin Name:       Image Alt Text Autofill
+ * Plugin URI:        https://github.com/tetterip/image-alt-text-autofill
  * Description:       Writes missing image alt text automatically: from the file name and titles, or with AI through the AI provider set up in WordPress. Bulk tool for existing images.
  * Version:           0.1.0
  * Author:            Michalis Tetteris
  * Author URI:        https://ttrp.gr
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Update URI:        https://plugins.ttrp.gr/
- * Text Domain:       tet-smart-alt-text
+ * Text Domain:       image-alt-text-autofill
  * Domain Path:       /languages
  * Requires at least: 6.2
  * Tested up to:      7.1
  * Requires PHP:      7.4
  *
- * @package Tet_Smart_Alt_Text
+ * @package Image_Alt_Text_Autofill
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -36,7 +35,7 @@ require_once TET_ALT_PATH . 'includes/class-tet-alt-admin.php';
 add_action(
 	'init',
 	function () {
-		load_plugin_textdomain( 'tet-smart-alt-text', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+		load_plugin_textdomain( 'image-alt-text-autofill', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 	}
 );
 
@@ -61,13 +60,7 @@ add_action(
 		}
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			require_once TET_ALT_PATH . 'includes/class-tet-alt-cli.php';
-			WP_CLI::add_command( 'smart-alt', 'Tet_Alt_CLI' );
+			WP_CLI::add_command( 'alt-autofill', 'Tet_Alt_CLI' );
 		}
 	}
 );
-
-// Updates + "All Plugins" page (shared ttrp-common library; left out of WordPress.org builds).
-if ( file_exists( TET_ALT_PATH . 'ttrp-common/loader.php' ) ) {
-	require_once TET_ALT_PATH . 'ttrp-common/loader.php';
-	ttrp_common_register( __FILE__, 'tet-smart-alt-text' );
-}

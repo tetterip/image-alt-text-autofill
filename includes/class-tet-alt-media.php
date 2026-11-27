@@ -2,7 +2,7 @@
 /**
  * Upload hook, front-end fill-in, Media Library column / buttons and the single-image AJAX action.
  *
- * @package Tet_Smart_Alt_Text
+ * @package Image_Alt_Text_Autofill
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -139,7 +139,7 @@ class Tet_Alt_Media {
 	/* ── Media Library ──────────────────────────────────────── */
 
 	public static function add_column( $columns ) {
-		$columns['tet_alt'] = esc_html__( 'Alt text', 'tet-smart-alt-text' );
+		$columns['tet_alt'] = esc_html__( 'Alt text', 'image-alt-text-autofill' );
 		return $columns;
 	}
 
@@ -150,10 +150,10 @@ class Tet_Alt_Media {
 		$alt    = (string) get_post_meta( (int) $id, '_wp_attachment_image_alt', true );
 		$source = (string) get_post_meta( (int) $id, Tet_Alt_Generator::META_SOURCE, true );
 		echo '<div class="tet-alt-cell" data-id="' . esc_attr( (string) $id ) . '">';
-		echo '<span class="tet-alt-text">' . ( '' !== $alt ? esc_html( $alt ) : '<em class="tet-alt-missing">' . esc_html__( 'Missing', 'tet-smart-alt-text' ) . '</em>' ) . '</span> ';
+		echo '<span class="tet-alt-text">' . ( '' !== $alt ? esc_html( $alt ) : '<em class="tet-alt-missing">' . esc_html__( 'Missing', 'image-alt-text-autofill' ) . '</em>' ) . '</span> ';
 		echo self::source_badge( $source ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside.
 		if ( current_user_can( 'edit_post', (int) $id ) ) {
-			echo '<br /><button type="button" class="button-link tet-alt-generate" data-id="' . esc_attr( (string) $id ) . '">' . esc_html( '' !== $alt ? __( 'Regenerate', 'tet-smart-alt-text' ) : __( 'Generate', 'tet-smart-alt-text' ) ) . '</button>';
+			echo '<br /><button type="button" class="button-link tet-alt-generate" data-id="' . esc_attr( (string) $id ) . '">' . esc_html( '' !== $alt ? __( 'Regenerate', 'image-alt-text-autofill' ) : __( 'Generate', 'image-alt-text-autofill' ) ) . '</button>';
 		}
 		echo '</div>';
 	}
@@ -165,17 +165,17 @@ class Tet_Alt_Media {
 	 */
 	public static function source_badge( string $source ): string {
 		if ( 'ai' === $source ) {
-			return '<span class="tet-alt-badge tet-alt-badge--ai">' . esc_html__( 'AI', 'tet-smart-alt-text' ) . '</span>';
+			return '<span class="tet-alt-badge tet-alt-badge--ai">' . esc_html__( 'AI', 'image-alt-text-autofill' ) . '</span>';
 		}
 		if ( 'template' === $source ) {
-			return '<span class="tet-alt-badge">' . esc_html__( 'Auto', 'tet-smart-alt-text' ) . '</span>';
+			return '<span class="tet-alt-badge">' . esc_html__( 'Auto', 'image-alt-text-autofill' ) . '</span>';
 		}
 		return '';
 	}
 
 	public static function add_bulk_action( $actions ) {
 		if ( current_user_can( 'manage_options' ) ) {
-			$actions['tet_alt_generate'] = __( 'Generate alt text', 'tet-smart-alt-text' );
+			$actions['tet_alt_generate'] = __( 'Generate alt text', 'image-alt-text-autofill' );
 		}
 		return $actions;
 	}
@@ -215,7 +215,7 @@ class Tet_Alt_Media {
 		$fields['tet_alt_generate'] = array(
 			'label' => '',
 			'input' => 'html',
-			'html'  => '<button type="button" class="button tet-alt-generate" data-id="' . esc_attr( (string) $post->ID ) . '" data-fill="1">' . esc_html__( 'Generate alt text', 'tet-smart-alt-text' ) . '</button> <span class="tet-alt-modal-status" aria-live="polite"></span>',
+			'html'  => '<button type="button" class="button tet-alt-generate" data-id="' . esc_attr( (string) $post->ID ) . '" data-fill="1">' . esc_html__( 'Generate alt text', 'image-alt-text-autofill' ) . '</button> <span class="tet-alt-modal-status" aria-live="polite"></span>',
 		);
 		return $fields;
 	}
@@ -233,12 +233,12 @@ class Tet_Alt_Media {
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 				'nonce'   => wp_create_nonce( self::NONCE ),
 				'i18n'    => array(
-					'working' => __( 'Writing…', 'tet-smart-alt-text' ),
-					'done'    => __( 'Done', 'tet-smart-alt-text' ),
-					'error'   => __( 'Could not generate the alt text.', 'tet-smart-alt-text' ),
-					'missing' => __( 'Missing', 'tet-smart-alt-text' ),
-					'regen'   => __( 'Regenerate', 'tet-smart-alt-text' ),
-					'confirm' => __( 'Replace the current alt text?', 'tet-smart-alt-text' ),
+					'working' => __( 'Writing…', 'image-alt-text-autofill' ),
+					'done'    => __( 'Done', 'image-alt-text-autofill' ),
+					'error'   => __( 'Could not generate the alt text.', 'image-alt-text-autofill' ),
+					'missing' => __( 'Missing', 'image-alt-text-autofill' ),
+					'regen'   => __( 'Regenerate', 'image-alt-text-autofill' ),
+					'confirm' => __( 'Replace the current alt text?', 'image-alt-text-autofill' ),
 				),
 			)
 		);
@@ -261,7 +261,7 @@ class Tet_Alt_Media {
 		check_ajax_referer( self::NONCE, 'nonce' );
 		$id = isset( $_POST['id'] ) ? absint( $_POST['id'] ) : 0;
 		if ( ! $id || ! current_user_can( 'edit_post', $id ) ) {
-			wp_send_json_error( array( 'message' => __( 'You are not allowed to edit this image.', 'tet-smart-alt-text' ) ), 403 );
+			wp_send_json_error( array( 'message' => __( 'You are not allowed to edit this image.', 'image-alt-text-autofill' ) ), 403 );
 		}
 		$result = Tet_Alt_Generator::apply( $id, '', 'all' );
 		if ( 'saved' !== $result['status'] ) {

@@ -2,7 +2,7 @@
 /**
  * Generates and saves alt texts for attachments.
  *
- * @package Tet_Smart_Alt_Text
+ * @package Image_Alt_Text_Autofill
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -75,7 +75,7 @@ class Tet_Alt_Generator {
 	 */
 	public static function generate( int $id, string $source = '' ) {
 		if ( ! wp_attachment_is_image( $id ) ) {
-			return new WP_Error( 'tet_alt_not_image', __( 'This attachment is not an image.', 'tet-smart-alt-text' ) );
+			return new WP_Error( 'tet_alt_not_image', __( 'This attachment is not an image.', 'image-alt-text-autofill' ) );
 		}
 		$source = '' !== $source ? $source : (string) Tet_Alt_Settings::get( 'source' );
 		$note   = '';
@@ -93,7 +93,7 @@ class Tet_Alt_Generator {
 
 		$alt = self::from_template( $id );
 		if ( '' === $alt ) {
-			return new WP_Error( 'tet_alt_empty', '' !== $note ? $note : __( 'Nothing to build an alt text from (the file name says nothing and the image is not attached to a post).', 'tet-smart-alt-text' ) );
+			return new WP_Error( 'tet_alt_empty', '' !== $note ? $note : __( 'Nothing to build an alt text from (the file name says nothing and the image is not attached to a post).', 'image-alt-text-autofill' ) );
 		}
 		return array( 'alt' => $alt, 'source' => 'template', 'note' => $note );
 	}

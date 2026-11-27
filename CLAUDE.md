@@ -1,16 +1,18 @@
-# Smart Alt Text — Claude Code Context
+# Image Alt Text Autofill — Claude Code Context
 
 ## Idea
 
 Our alternative to wordpress.org's "Auto Image Alt" (filename only, unmaintained since 2019). Fills missing image alt
 text on **any** WordPress site (not WooCommerce-only): from a template (cleaned file name, titles) or with AI through the
 **WordPress 7.0 AI Client** (`wp_ai_client_prompt()`), whose provider and key the site owner sets in Settings → Connectors.
-Planned for WordPress.org later: keep it GPL, guideline-friendly, no keys stored, no upsells, ttrp-common optional.
+**Distributed through WordPress.org only** (Michalis, 2026-11-27): not on plugins.ttrp.gr, not in the update server,
+no ttrp-common, no `Update URI`. Keep it GPL and within the plugin guidelines: no keys stored, no upsells, no calls home,
+no external assets.
 
 ## Architecture
 
 ```
-tet-smart-alt-text.php            Bootstrap: header, constants, requires, init, WP-CLI, ttrp-common (if present)
+image-alt-text-autofill.php            Bootstrap: header, constants, requires, init, WP-CLI
 uninstall.php                     Deletes tet_alt_settings and our meta; alt texts stay (site content)
 includes/
   class-tet-alt-logic.php         Pure (tested): clean_filename, apply_template, sanitize_alt, <img> helpers, may_write
@@ -18,11 +20,11 @@ includes/
   class-tet-alt-ai.php            status() (no API call: is_supported_for_text_generation with a 1px image), describe(), prompt
   class-tet-alt-generator.php     template_vars, from_template, generate (AI → template fallback), apply (scope), save
   class-tet-alt-media.php         Upload hook, front-end fill-in, Media Library column/bulk action/modal button, AJAX generate
-  class-tet-alt-admin.php         ttrp.gr Plugins → Smart Alt Text (Bulk / Settings), counts, bulk AJAX, privacy text
-  class-tet-alt-cli.php           wp smart-alt generate|stats
+  class-tet-alt-admin.php         Media → Alt Text (Bulk / Settings), counts, bulk AJAX, privacy text
+  class-tet-alt-cli.php           wp alt-autofill generate|stats
 assets/js/media.js, bulk.js       Plain JS, no build
 tools/i18n/                       el.mjs + build.mjs (node tools/i18n/build.mjs); not shipped
-ttrp-common/                      Synced from plugins.ttrp.gr-autoupdater; never edit
+readme.txt                        WordPress.org readme (Stable tag, External services section)
 ```
 
 ## Key decisions
@@ -47,11 +49,12 @@ ttrp-common/                      Synced from plugins.ttrp.gr-autoupdater; never
 
 - PHP 7.4+, WordPress Coding Standards, escape/sanitise, nonce + capability on every AJAX action
   (generate: `edit_post`; bulk/settings: `manage_options`).
-- Prefix `tet_alt_` / `Tet_Alt_` / `TET_ALT_`; text domain `tet-smart-alt-text`.
-- `Tet_Alt_Admin::PLUGIN_TITLE` ("Smart Alt Text") is never translated (suite rule).
+- Prefix `tet_alt_` / `Tet_Alt_` / `TET_ALT_`; text domain `image-alt-text-autofill`.
+- `Tet_Alt_Admin::PLUGIN_TITLE` ("Image Alt Text Autofill") is never translated (a name).
 - After changing strings: add Greek to `tools/i18n/el.mjs`, run `node tools/i18n/build.mjs`.
-- Bump `Version:` (header), `Stable tag` (readme.txt) and `CHANGELOG.md` together. Release: Actions → Release → Run workflow
-  (cloud sessions can't push tags) or push `vX.Y.Z`.
+- Bump `Version:` (header), `Stable tag` (readme.txt) and `CHANGELOG.md` together. GitHub release: Actions → Release → Run
+  workflow (cloud sessions can't push tags). WordPress.org: SVN `trunk` + `tags/X.Y.Z` (after approval).
+- Before each WordPress.org release run the Plugin Check plugin (PCP) on a test site.
 - Keep the privacy texts (README, readme.txt "External services", `privacy_policy_content()`) true to what is sent.
 
 ## Testing

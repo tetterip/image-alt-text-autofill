@@ -10,5 +10,5 @@ All notable changes to this project are documented here. The format follows [Kee
 - Alt text written on upload, and added to images shown without one on the site.
 - Bulk page with preview, scopes (missing / automatic / all) and progress; replaced alt texts are kept.
 - Media Library column, Generate buttons, bulk action and a button in the media modal.
-- WP-CLI commands `wp smart-alt generate` and `wp smart-alt stats`.
+- WP-CLI commands `wp alt-autofill generate` and `wp alt-autofill stats`.
 - Suggested privacy policy text; Greek translation.

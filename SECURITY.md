@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-Only the latest release of Smart Alt Text gets security fixes. Sites receive it through the normal WordPress
+Only the latest release of Image Alt Text Autofill gets security fixes. Sites receive it through the normal WordPress
 update screen.
 
 ## Reporting a vulnerability

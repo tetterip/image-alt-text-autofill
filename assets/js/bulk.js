@@ -1,4 +1,4 @@
-/* Smart Alt Text: bulk page. Lists the images, then sends them in small batches. */
+/* Image Alt Text Autofill: bulk page. Lists the images, then sends them in small batches. */
 ( function () {
 	'use strict';
 	var cfg = window.tetAltBulk;

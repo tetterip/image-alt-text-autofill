@@ -2,7 +2,7 @@
 /**
  * Pure logic, no WordPress calls (unit tested in tests/test-logic.php).
  *
- * @package Tet_Smart_Alt_Text
+ * @package Image_Alt_Text_Autofill
  */
 
 defined( 'ABSPATH' ) || exit;

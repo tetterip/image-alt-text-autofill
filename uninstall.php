@@ -2,7 +2,7 @@
 /**
  * Removes the plugin's settings and bookkeeping. The alt texts themselves stay: they are site content.
  *
- * @package Tet_Smart_Alt_Text
+ * @package Image_Alt_Text_Autofill
  */
 
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;

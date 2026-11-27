@@ -28,7 +28,7 @@ jobs:
           else
             VERSION="${GITHUB_REF_NAME#v}"
           fi
-          HEADER=$(sed -n 's/^ \* Version: *//p' tet-smart-alt-text.php | tr -d '[:space:]')
+          HEADER=$(sed -n 's/^ \* Version: *//p' image-alt-text-autofill.php | tr -d '[:space:]')
           if [ "$VERSION" != "$HEADER" ]; then
             echo "::error::Version $VERSION does not match the plugin header ($HEADER)"
             exit 1
@@ -37,15 +37,15 @@ jobs:
 
       - name: Build plugin zip
         run: |
-          mkdir -p tet-smart-alt-text
-          cp tet-smart-alt-text.php uninstall.php LICENSE readme.txt tet-smart-alt-text/
-          cp -r includes assets languages ttrp-common tet-smart-alt-text/
-          zip -r "tet-smart-alt-text-${{ steps.version.outputs.VERSION }}.zip" tet-smart-alt-text/
+          mkdir -p image-alt-text-autofill
+          cp image-alt-text-autofill.php uninstall.php LICENSE readme.txt image-alt-text-autofill/
+          cp -r includes assets languages image-alt-text-autofill/
+          zip -r "image-alt-text-autofill-${{ steps.version.outputs.VERSION }}.zip" image-alt-text-autofill/
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.version.outputs.VERSION }}
           target_commitish: ${{ github.sha }}
-          files: tet-smart-alt-text-${{ steps.version.outputs.VERSION }}.zip
+          files: image-alt-text-autofill-${{ steps.version.outputs.VERSION }}.zip
           generate_release_notes: true

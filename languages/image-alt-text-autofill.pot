@@ -1,10 +1,10 @@
-# Translation template for Smart Alt Text.
+# Translation template for Image Alt Text Autofill.
 # Copyright (C) ttrp.gr
 # This file is distributed under the GPL-2.0+ license.
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Smart Alt Text\n"
+"Project-Id-Version: Image Alt Text Autofill\n"
 "Report-Msgid-Bugs-To: https://ttrp.gr\n"
 "POT-Creation-Date: 2026-09-25 12:00+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -13,162 +13,166 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Domain: tet-smart-alt-text\n"
+"X-Domain: image-alt-text-autofill\n"
 
-#: includes/class-tet-alt-admin.php:46 includes/class-tet-alt-admin.php:140
+#: includes/class-tet-alt-admin.php:45 includes/class-tet-alt-admin.php:95
 msgid "Settings"
 msgstr ""
 
+#: includes/class-tet-alt-admin.php:52
+msgid "Alt Text"
+msgstr ""
+
 #. translators: 1: images done, 2: images in total.
-#: includes/class-tet-alt-admin.php:114
+#: includes/class-tet-alt-admin.php:69
 msgid "%1$d of %2$d images"
 msgstr ""
 
 #. translators: 1: images done, 2: images in total.
-#: includes/class-tet-alt-admin.php:115
+#: includes/class-tet-alt-admin.php:70
 msgid "No images match. Nothing to do."
 msgstr ""
 
 #. translators: 1: images done, 2: images in total.
-#: includes/class-tet-alt-admin.php:116
+#: includes/class-tet-alt-admin.php:71
 msgid "Finished."
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:117
+#: includes/class-tet-alt-admin.php:72
 msgid "Stopped."
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:118
+#: includes/class-tet-alt-admin.php:73
 msgid "The request failed. Check your connection and try again."
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:119
+#: includes/class-tet-alt-admin.php:74
 msgid "Saved"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:120 includes/class-tet-alt-admin.php:217
+#: includes/class-tet-alt-admin.php:75 includes/class-tet-alt-admin.php:165
 msgid "Preview"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:121
+#: includes/class-tet-alt-admin.php:76
 msgid "Kept"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:122
+#: includes/class-tet-alt-admin.php:77
 msgid "Error"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:123 includes/class-tet-alt-admin.php:199 includes/class-tet-alt-media.php:168 includes/class-tet-alt-settings.php:153
+#: includes/class-tet-alt-admin.php:78 includes/class-tet-alt-admin.php:147 includes/class-tet-alt-media.php:168 includes/class-tet-alt-settings.php:153
 msgid "AI"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:124 includes/class-tet-alt-admin.php:198 includes/class-tet-alt-settings.php:130
+#: includes/class-tet-alt-admin.php:79 includes/class-tet-alt-admin.php:146 includes/class-tet-alt-settings.php:130
 msgid "Template"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:125
+#: includes/class-tet-alt-admin.php:80
 msgid "This replaces every alt text, including ones written by people. Continue?"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:139
+#: includes/class-tet-alt-admin.php:94
 msgid "Bulk generate"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:177
+#: includes/class-tet-alt-admin.php:125
 msgid "Images"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:178
+#: includes/class-tet-alt-admin.php:126
 msgid "Without alt text"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:179
+#: includes/class-tet-alt-admin.php:127
 msgid "Automatic (template)"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:180
+#: includes/class-tet-alt-admin.php:128
 msgid "Written by AI"
 msgstr ""
 
 #. translators: %s: number of images.
-#: includes/class-tet-alt-admin.php:191
+#: includes/class-tet-alt-admin.php:139
 msgid "Use all images instead"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:196
+#: includes/class-tet-alt-admin.php:144
 msgid "Write with"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:201
+#: includes/class-tet-alt-admin.php:149
 msgid "Why is AI not available?"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:206
+#: includes/class-tet-alt-admin.php:154
 msgid "Which images"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:209
+#: includes/class-tet-alt-admin.php:157
 msgid "Only those without alt text"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:210
+#: includes/class-tet-alt-admin.php:158
 msgid "Also replace automatic (template) alt texts, e.g. with AI ones"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:211
+#: includes/class-tet-alt-admin.php:159
 msgid "All images, including alt texts written by people"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:213
+#: includes/class-tet-alt-admin.php:161
 msgid "A replaced alt text is kept in the image's data, so it is never lost."
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:218
+#: includes/class-tet-alt-admin.php:166
 msgid "Only show what would be written, save nothing"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:222
+#: includes/class-tet-alt-admin.php:170
 msgid "Start"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:223
+#: includes/class-tet-alt-admin.php:171
 msgid "Stop"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:227
+#: includes/class-tet-alt-admin.php:175
 msgid "Keep this page open while it runs. With AI, every image is one request to your provider."
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:233
+#: includes/class-tet-alt-admin.php:181
 msgid "Image"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:234 includes/class-tet-alt-media.php:142
+#: includes/class-tet-alt-admin.php:182 includes/class-tet-alt-media.php:142
 msgid "Alt text"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:235
+#: includes/class-tet-alt-admin.php:183
 msgid "Result"
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:312
+#: includes/class-tet-alt-admin.php:260
 msgid "You are not allowed to do this."
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:382
-msgid "Smart Alt Text writes descriptions (alt text) for the images in the media library, for visitors who use screen readers and for search engines."
+#: includes/class-tet-alt-admin.php:330
+msgid "Image Alt Text Autofill writes descriptions (alt text) for the images in the media library, for visitors who use screen readers and for search engines."
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:383
+#: includes/class-tet-alt-admin.php:331
 msgid "Without AI, it works only with data already on this site (file names and titles) and sends nothing anywhere."
 msgstr ""
 
-#: includes/class-tet-alt-admin.php:384
+#: includes/class-tet-alt-admin.php:332
 msgid "If AI descriptions are turned on, each image that gets a description is sent, with the site name and the title of the page or product it belongs to, to the AI provider the site owner set up in WordPress (Settings → Connectors). If an image shows people, that may be personal data; the provider's own privacy policy applies to what it receives. Visitors' data is never sent."
 msgstr ""
 
 #. translators: %s: number of images.
-#: includes/class-tet-alt-admin.php:189
+#: includes/class-tet-alt-admin.php:137
 msgid "%s image selected in the Media Library."
 msgid_plural "%s images selected in the Media Library."
 msgstr[0] ""
