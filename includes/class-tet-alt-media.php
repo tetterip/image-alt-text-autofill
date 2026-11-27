@@ -193,13 +193,7 @@ class Tet_Alt_Media {
 			return $redirect;
 		}
 		$ids = array_slice( array_filter( array_map( 'absint', (array) $ids ) ), 0, 500 );
-		return add_query_arg(
-			array(
-				'page' => Tet_Alt_Admin::PAGE,
-				'ids'  => implode( ',', $ids ),
-			),
-			admin_url( 'admin.php' )
-		);
+		return Tet_Alt_Admin::url( array( 'ids' => implode( ',', $ids ) ) );
 	}
 
 	/**

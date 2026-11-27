@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [0.1.0] - 2026-11-27
+## [1.0.0] - 2026-11-27
 
 ### Added
 - Alt text from a template (`{filename}`, `{title}`, `{caption}`, `{parent}`, `{site}`); file names are cleaned of sizes, WordPress suffixes and camera names such as `IMG_1234`.

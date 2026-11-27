@@ -4,7 +4,7 @@ Tags: alt text, accessibility, images, seo, ai
 Requires at least: 6.2
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.1.0
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,5 +48,5 @@ By default an empty alt is treated as missing. Untick "Treat an empty alt as mis
 
 == Changelog ==
 
-= 0.1.0 =
+= 1.0.0 =
 * First release.

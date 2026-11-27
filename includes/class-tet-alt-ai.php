@@ -193,6 +193,10 @@ class Tet_Alt_AI {
 		if ( ! in_array( $mime, self::MIME_TYPES, true ) ) {
 			return new WP_Error( 'tet_alt_unsupported', __( 'This image type cannot be sent to the AI (only JPEG, PNG, GIF and WebP).', 'image-alt-text-autofill' ) );
 		}
+		// The file's content must be an image too, not only its extension: nothing else is ever sent.
+		if ( ! in_array( (string) wp_get_image_mime( $file ), self::MIME_TYPES, true ) ) {
+			return new WP_Error( 'tet_alt_unsupported', __( 'This image type cannot be sent to the AI (only JPEG, PNG, GIF and WebP).', 'image-alt-text-autofill' ) );
+		}
 		$size = (int) filesize( $file );
 		if ( $size <= 0 || $size > self::MAX_BYTES ) {
 			return new WP_Error( 'tet_alt_too_big', __( 'The image is too large to send to the AI.', 'image-alt-text-autofill' ) );
@@ -219,7 +223,8 @@ class Tet_Alt_AI {
 		$sizes    = is_array( $meta ) && ! empty( $meta['sizes'] ) ? $meta['sizes'] : array();
 		foreach ( array( 'large', 'medium_large', 'medium' ) as $size ) {
 			if ( ! empty( $sizes[ $size ]['file'] ) ) {
-				$path = $dir . '/' . $sizes[ $size ]['file'];
+				// wp_basename(): the metadata is stored data; never let it point outside the image's own folder.
+				$path = $dir . '/' . wp_basename( (string) $sizes[ $size ]['file'] );
 				if ( is_readable( $path ) && filesize( $path ) <= self::MAX_BYTES ) {
 					return $path;
 				}

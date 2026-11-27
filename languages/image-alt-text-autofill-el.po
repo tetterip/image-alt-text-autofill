@@ -157,19 +157,19 @@ msgstr "Εναλλακτικό κείμενο"
 msgid "Result"
 msgstr "Αποτέλεσμα"
 
-#: includes/class-tet-alt-admin.php:260
+#: includes/class-tet-alt-admin.php:281
 msgid "You are not allowed to do this."
 msgstr "Δεν έχετε δικαίωμα για αυτή την ενέργεια."
 
-#: includes/class-tet-alt-admin.php:330
+#: includes/class-tet-alt-admin.php:351
 msgid "Image Alt Text Autofill writes descriptions (alt text) for the images in the media library, for visitors who use screen readers and for search engines."
 msgstr "Το Image Alt Text Autofill γράφει περιγραφές (εναλλακτικό κείμενο, alt) για τις εικόνες της βιβλιοθήκης πολυμέσων, για επισκέπτες που χρησιμοποιούν αναγνώστη οθόνης και για τις μηχανές αναζήτησης."
 
-#: includes/class-tet-alt-admin.php:331
+#: includes/class-tet-alt-admin.php:352
 msgid "Without AI, it works only with data already on this site (file names and titles) and sends nothing anywhere."
 msgstr "Χωρίς AI χρησιμοποιεί μόνο στοιχεία που υπάρχουν ήδη στον ιστότοπο (ονόματα αρχείων και τίτλους) και δεν στέλνει τίποτα πουθενά."
 
-#: includes/class-tet-alt-admin.php:332
+#: includes/class-tet-alt-admin.php:353
 msgid "If AI descriptions are turned on, each image that gets a description is sent, with the site name and the title of the page or product it belongs to, to the AI provider the site owner set up in WordPress (Settings → Connectors). If an image shows people, that may be personal data; the provider's own privacy policy applies to what it receives. Visitors' data is never sent."
 msgstr "Αν είναι ενεργές οι περιγραφές με AI, κάθε εικόνα που περιγράφεται στέλνεται, μαζί με το όνομα του ιστότοπου και τον τίτλο της σελίδας ή του προϊόντος όπου ανήκει, στον πάροχο AI που έχει ορίσει ο διαχειριστής στο WordPress (Ρυθμίσεις → Connectors). Αν μια εικόνα δείχνει πρόσωπα, αυτό μπορεί να είναι προσωπικά δεδομένα· για όσα λαμβάνει ο πάροχος ισχύει η δική του πολιτική απορρήτου. Δεδομένα επισκεπτών δεν στέλνονται ποτέ."
 
@@ -188,15 +188,15 @@ msgstr "Δεν έχει οριστεί πάροχος AI που διαβάζει
 msgid "The AI returned no description."
 msgstr "Το AI δεν επέστρεψε περιγραφή."
 
-#: includes/class-tet-alt-ai.php:189 includes/class-tet-alt-ai.php:202
+#: includes/class-tet-alt-ai.php:189 includes/class-tet-alt-ai.php:206
 msgid "The image file was not found."
 msgstr "Το αρχείο της εικόνας δεν βρέθηκε."
 
-#: includes/class-tet-alt-ai.php:194
+#: includes/class-tet-alt-ai.php:194 includes/class-tet-alt-ai.php:198
 msgid "This image type cannot be sent to the AI (only JPEG, PNG, GIF and WebP)."
 msgstr "Αυτός ο τύπος εικόνας δεν μπορεί να σταλεί στο AI (μόνο JPEG, PNG, GIF και WebP)."
 
-#: includes/class-tet-alt-ai.php:198
+#: includes/class-tet-alt-ai.php:202
 msgid "The image is too large to send to the AI."
 msgstr "Η εικόνα είναι πολύ μεγάλη για να σταλεί στο AI."
 
@@ -208,11 +208,11 @@ msgstr "Αυτό το συνημμένο δεν είναι εικόνα."
 msgid "Nothing to build an alt text from (the file name says nothing and the image is not attached to a post)."
 msgstr "Δεν υπάρχει από πού να βγει alt (το όνομα αρχείου δεν λέει κάτι και η εικόνα δεν ανήκει σε άρθρο)."
 
-#: includes/class-tet-alt-media.php:153 includes/class-tet-alt-media.php:239
+#: includes/class-tet-alt-media.php:153 includes/class-tet-alt-media.php:233
 msgid "Missing"
 msgstr "Λείπει"
 
-#: includes/class-tet-alt-media.php:156 includes/class-tet-alt-media.php:240
+#: includes/class-tet-alt-media.php:156 includes/class-tet-alt-media.php:234
 msgid "Regenerate"
 msgstr "Νέα δημιουργία"
 
@@ -224,27 +224,27 @@ msgstr "Δημιουργία"
 msgid "Auto"
 msgstr "Αυτόματο"
 
-#: includes/class-tet-alt-media.php:178 includes/class-tet-alt-media.php:218
+#: includes/class-tet-alt-media.php:178 includes/class-tet-alt-media.php:212
 msgid "Generate alt text"
 msgstr "Δημιουργία alt"
 
-#: includes/class-tet-alt-media.php:236
+#: includes/class-tet-alt-media.php:230
 msgid "Writing…"
 msgstr "Γράφεται…"
 
-#: includes/class-tet-alt-media.php:237
+#: includes/class-tet-alt-media.php:231
 msgid "Done"
 msgstr "Έτοιμο"
 
-#: includes/class-tet-alt-media.php:238
+#: includes/class-tet-alt-media.php:232
 msgid "Could not generate the alt text."
 msgstr "Δεν ήταν δυνατή η δημιουργία του alt."
 
-#: includes/class-tet-alt-media.php:241
+#: includes/class-tet-alt-media.php:235
 msgid "Replace the current alt text?"
 msgstr "Αντικατάσταση του τρέχοντος alt;"
 
-#: includes/class-tet-alt-media.php:264
+#: includes/class-tet-alt-media.php:258
 msgid "You are not allowed to edit this image."
 msgstr "Δεν έχετε δικαίωμα επεξεργασίας αυτής της εικόνας."
 

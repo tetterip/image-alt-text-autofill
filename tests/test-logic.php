@@ -74,6 +74,11 @@ test( 'img: needs alt', function () use ( $l ) {
 test( 'img: set alt replaces or inserts and escapes', function () use ( $l ) {
 	eq( '<img alt="Sofa &amp; &quot;chair&quot;" src="a.jpg">', $l::img_set_alt( '<img src="a.jpg">', 'Sofa & "chair"' ) );
 	eq( '<img src="a.jpg" alt="Sofa">', $l::img_set_alt( '<img src="a.jpg" alt="">', 'Sofa' ) );
+	// "$1" / "\\1" in the alt must stay text, never a backreference to the original tag (attribute injection).
+	eq( '<img src="a.jpg" alt="Sale $1 onerror=alert(1) x">', $l::img_set_alt( '<img src="a.jpg" alt="">', 'Sale $1 onerror=alert(1) x' ) );
+	eq( '<img src="a.jpg" alt="Price \\1 and $0">', $l::img_set_alt( '<img src="a.jpg" alt="">', 'Price \\1 and $0' ) );
+	eq( '<img alt="Cost $10 \\0" src="a.jpg">', $l::img_set_alt( '<img src="a.jpg">', 'Cost $10 \\0' ) );
+	eq( 'Bold', $l::sanitize_alt( '&lt;b&gt;bold&lt;/b&gt;' ) );
 	eq( '<img src="a.jpg" alt="Sofa" />', $l::img_set_alt( '<img src="a.jpg" alt />', 'Sofa' ) );
 	eq( '<img data-alt="x" alt="Sofa" src="a.jpg">', $l::img_set_alt( '<img data-alt="x" src="a.jpg">', 'Sofa' ) === '<img alt="Sofa" data-alt="x" src="a.jpg">' ? '<img data-alt="x" alt="Sofa" src="a.jpg">' : 'bad' );
 } );

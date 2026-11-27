@@ -3,7 +3,7 @@
  * Plugin Name:       Image Alt Text Autofill
  * Plugin URI:        https://github.com/tetterip/image-alt-text-autofill
  * Description:       Fills in missing image alt text from file names and titles, or with AI through the provider set up in WordPress.
- * Version:           0.1.0
+ * Version:           1.0.0
  * Author:            Michalis Tetteris
  * Author URI:        https://ttrp.gr
  * License:           GPL-2.0-or-later

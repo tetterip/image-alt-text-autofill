@@ -129,7 +129,8 @@ class Tet_Alt_Logic {
 	 * @param int    $max  Maximum length in characters (0 = no limit).
 	 */
 	public static function sanitize_alt( string $text, int $max = 0 ): string {
-		$text = html_entity_decode( self::strip_html( $text ), ENT_QUOTES | ENT_HTML5, 'UTF-8' );
+		// Strip again after decoding, so "&lt;b&gt;" doesn't come back as a tag.
+		$text = self::strip_html( html_entity_decode( self::strip_html( $text ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ) );
 		$text = trim( (string) preg_replace( '/\s+/u', ' ', $text ) );
 
 		// Labels and wrappers models sometimes add.
@@ -194,10 +195,22 @@ class Tet_Alt_Logic {
 	public static function img_set_alt( string $tag, string $alt ): string {
 		$attr = 'alt="' . htmlspecialchars( $alt, ENT_QUOTES, 'UTF-8' ) . '"';
 		$re   = '/\salt(\s*=\s*(?:"[^"]*"|\'[^\']*\'|[^\s>]+))?(?=[\s\/>])/i';
+		// Callbacks, not replacement strings: "$1" or "\\1" in an alt text would otherwise be read as a
+		// backreference and paste part of the original tag, unescaped, into the attribute.
+		$set = static function () use ( $attr ) {
+			return ' ' . $attr;
+		};
 		if ( preg_match( $re, $tag ) ) {
-			return (string) preg_replace( $re, ' ' . $attr, $tag, 1 );
+			return (string) preg_replace_callback( $re, $set, $tag, 1 );
 		}
-		return (string) preg_replace( '/^<img\b/i', '<img ' . $attr, $tag, 1 );
+		return (string) preg_replace_callback(
+			'/^<img\b/i',
+			static function () use ( $attr ) {
+				return '<img ' . $attr;
+			},
+			$tag,
+			1
+		);
 	}
 
 	/**
