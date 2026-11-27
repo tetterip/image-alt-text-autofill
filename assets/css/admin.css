@@ -31,3 +31,5 @@
 .tet-alt-modal-status { margin-left: 6px; color: #50575e; }
 .tet-alt-wrap [hidden] { display: none !important; }
 .tet-alt-version { font-size: 13px; font-weight: 400; color: #787c82; margin-left: 4px; }
+
+.tet-alt-cost { margin: 10px 0 0; max-width: 720px; }

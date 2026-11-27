@@ -34,6 +34,7 @@ class Tet_Alt_Settings {
 			'ai_context'       => 'yes',      // Send the post / product title with the image.
 			'ai_instructions'  => '',
 			'ai_fallback'      => 'yes',      // Use the template when AI fails.
+			'ai_roles'         => array( 'administrator', 'editor' ), // Roles whose uploads / Generate clicks may use AI (it costs money).
 		);
 	}
 
@@ -101,6 +102,10 @@ class Tet_Alt_Settings {
 		$out['max_length']      = min( 250, max( 40, absint( $input['max_length'] ?? $d['max_length'] ) ) );
 		$out['ai_instructions'] = sanitize_textarea_field( wp_unslash( (string) ( $input['ai_instructions'] ?? '' ) ) );
 
+		// Roles allowed to use AI: only roles that exist; administrators always may.
+		$roles           = array_map( 'sanitize_key', (array) ( $input['ai_roles'] ?? array() ) );
+		$out['ai_roles'] = array_values( array_unique( array_merge( array( 'administrator' ), array_intersect( $roles, array_keys( wp_roles()->roles ) ) ) ) );
+
 		self::flush();
 		return $out;
 	}
@@ -124,6 +129,9 @@ class Tet_Alt_Settings {
 							<label><input type="radio" name="<?php echo esc_attr( $name ); ?>[source]" value="ai" <?php checked( 'ai', $s['source'] ); ?> <?php disabled( ! $ai['available'] && 'ai' !== $s['source'] ); ?> /> <?php esc_html_e( 'AI: describe the image with the AI provider set up in WordPress', 'image-alt-text-autofill' ); ?></label>
 						</fieldset>
 						<?php self::render_ai_status( $ai ); ?>
+						<div class="notice notice-warning inline tet-alt-cost" data-tet-alt-show="<?php echo esc_attr( $name ); ?>[source]=ai" <?php echo 'ai' === $s['source'] ? '' : 'hidden'; ?>>
+							<p><strong><?php esc_html_e( 'AI can cost money.', 'image-alt-text-autofill' ); ?></strong> <?php echo esc_html( self::cost_text() ); ?></p>
+						</div>
 					</td>
 				</tr>
 				<tr>
@@ -164,6 +172,17 @@ class Tet_Alt_Settings {
 					</td>
 				</tr>
 				<tr>
+					<th scope="row"><?php esc_html_e( 'Who can use AI', 'image-alt-text-autofill' ); ?></th>
+					<td>
+						<fieldset>
+							<?php foreach ( self::ai_role_choices() as $role => $label ) : ?>
+								<label><input type="checkbox" name="<?php echo esc_attr( $name ); ?>[ai_roles][]" value="<?php echo esc_attr( $role ); ?>" <?php checked( 'administrator' === $role || in_array( $role, (array) $s['ai_roles'], true ) ); ?> <?php disabled( 'administrator' === $role ); ?> /> <?php echo esc_html( $label ); ?></label><br />
+							<?php endforeach; ?>
+						</fieldset>
+						<p class="description"><?php esc_html_e( 'Only these roles send images to the AI when they upload or press Generate. For everyone else the template is used. The bulk tool is for administrators only.', 'image-alt-text-autofill' ); ?></p>
+					</td>
+				</tr>
+				<tr>
 					<th scope="row"><?php esc_html_e( 'If AI fails', 'image-alt-text-autofill' ); ?></th>
 					<td><label><input type="checkbox" name="<?php echo esc_attr( $name ); ?>[ai_fallback]" value="1" <?php checked( self::on( 'ai_fallback' ) ); ?> /> <?php esc_html_e( 'Use the template instead (AI texts can still replace it later)', 'image-alt-text-autofill' ); ?></label></td>
 				</tr>
@@ -190,6 +209,26 @@ class Tet_Alt_Settings {
 		<?php
 	}
 
+	/** The cost warning, shown wherever AI is chosen. */
+	public static function cost_text(): string {
+		return __( 'Every image is one request to your AI provider, paid with your own API key at the provider\'s prices. This plugin adds no charge of its own and cannot see or limit what the provider bills. Check the provider\'s pricing and set a spending limit in your account there, especially before a bulk run on a large library.', 'image-alt-text-autofill' );
+	}
+
+	/**
+	 * Roles that can upload files, for the "Who can use AI" setting.
+	 *
+	 * @return array<string,string> Role => translated name.
+	 */
+	public static function ai_role_choices(): array {
+		$choices = array();
+		foreach ( wp_roles()->roles as $role => $data ) {
+			if ( 'administrator' === $role || ! empty( $data['capabilities']['upload_files'] ) ) {
+				$choices[ $role ] = translate_user_role( $data['name'] );
+			}
+		}
+		return $choices;
+	}
+
 	/**
 	 * Status line under the AI option.
 	 *
@@ -198,7 +237,7 @@ class Tet_Alt_Settings {
 	private static function render_ai_status( array $ai ): void {
 		if ( $ai['available'] ) {
 			echo '<p class="tet-alt-ai-status tet-alt-ai-status--ok"><span class="dashicons dashicons-yes-alt" aria-hidden="true"></span> ' . esc_html__( 'An AI provider that can read images is set up.', 'image-alt-text-autofill' ) . '</p>';
-			echo '<p class="description">' . esc_html__( 'With AI, each image is sent to that provider to be described. The provider may charge for each request.', 'image-alt-text-autofill' ) . '</p>';
+			echo '<p class="description">' . esc_html__( 'With AI, each image is sent to that provider to be described.', 'image-alt-text-autofill' ) . '</p>';
 			return;
 		}
 		$messages = array(

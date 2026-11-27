@@ -61,6 +61,7 @@ The plugin itself contacts no other server: updates come from WordPress.org like
 | `tet_alt_ai_prompt` | filter | Adjust the AI Client builder, e.g. `->using_model_preference( … )` |
 | `tet_alt_ai_instruction` | filter | The system instruction sent with every image |
 | `tet_alt_ai_context` | filter | Context lines sent with the image |
+| `tet_alt_ai_user_can` | filter | Whether the current user may use AI (default: the roles under "Who can use AI") |
 | `tet_alt_saved` | action | After an alt text was generated and saved (`$id`, `$alt`, `$source`) |
 
 Meta: `_tet_alt_source` (`template` / `ai`, removed when someone edits the alt by hand) and `_tet_alt_previous`.

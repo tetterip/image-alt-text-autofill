@@ -33,6 +33,9 @@ readme.txt                        WordPress.org readme (Stable tag, External ser
   `wp_supports_ai()`, and a configured model accepts text+image (checked without a request). Image sent inline as a data
   URI ("large" size, ≤ 4 MB, JPEG/PNG/GIF/WebP) so local/staging sites work. Prompt asks for the site language
   (`determine_locale()`), ≤ max_length chars, no "image of"; `sanitize_alt()` cleans what comes back anyway.
+- **Who may spend AI requests:** setting `ai_roles` (default administrator + editor; administrators always). `Tet_Alt_AI::user_can()`
+  (filter `tet_alt_ai_user_can`; WP-CLI and cron pass). Other users' uploads / Generate clicks get the template, regardless of
+  "If AI fails". The cost notice text is `Tet_Alt_Settings::cost_text()` (Settings + Bulk, shown by bulk.js when AI is chosen).
 - **Who wrote it:** meta `_tet_alt_source` = `template` | `ai`. Any other write of `_wp_attachment_image_alt` (a person,
   another plugin) deletes it (`updated_post_meta`), so it counts as hand-written. `save()` writes the alt first and the
   flag after, so its own write passes. Scopes: `missing`, `auto` (missing + template), `all`. A replaced alt goes to

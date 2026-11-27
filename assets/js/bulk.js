@@ -3,6 +3,24 @@
 	'use strict';
 	var cfg = window.tetAltBulk;
 	var form = document.getElementById( 'tet-alt-bulk-form' );
+
+	// Notes that belong to one choice of a radio group (the AI cost warning): data-tet-alt-show="name=value".
+	Array.prototype.forEach.call( document.querySelectorAll( '[data-tet-alt-show]' ), function ( el ) {
+		var parts = el.getAttribute( 'data-tet-alt-show' ).split( '=' );
+		var value = parts.pop();
+		var radios = document.getElementsByName( parts.join( '=' ) );
+		function sync() {
+			var on = false;
+			Array.prototype.forEach.call( radios, function ( r ) {
+				on = on || ( r.checked && r.value === value );
+			} );
+			el.hidden = ! on;
+		}
+		Array.prototype.forEach.call( radios, function ( r ) {
+			r.addEventListener( 'change', sync );
+		} );
+		sync();
+	} );
 	if ( ! cfg || ! form ) {
 		return;
 	}
@@ -135,6 +153,10 @@
 				if ( ! total ) {
 					text.textContent = cfg.i18n.none;
 					done( '' );
+					return;
+				}
+				if ( 'ai' === base.source && ! window.confirm( cfg.i18n.confirmAi.replace( '%d', total ) ) ) {
+					done( cfg.i18n.stopped );
 					return;
 				}
 				table.hidden = false;

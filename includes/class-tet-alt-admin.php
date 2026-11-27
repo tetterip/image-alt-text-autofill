@@ -77,6 +77,8 @@ class Tet_Alt_Admin {
 					'error'     => __( 'Error', 'image-alt-text-autofill' ),
 					'sourceAi'  => __( 'AI', 'image-alt-text-autofill' ),
 					'sourceTemplate' => __( 'Template', 'image-alt-text-autofill' ),
+					/* translators: %d: number of images. */
+					'confirmAi' => __( 'Images to send to your AI provider: %d (one paid request each). Continue?', 'image-alt-text-autofill' ),
 					'confirmAll' => __( 'This replaces every alt text, including ones written by people. Continue?', 'image-alt-text-autofill' ),
 				),
 			)
@@ -145,6 +147,9 @@ class Tet_Alt_Admin {
 					<td>
 						<label><input type="radio" name="source" value="template" <?php checked( ! $ai || 'template' === Tet_Alt_Settings::get( 'source' ) ); ?> /> <?php esc_html_e( 'Template', 'image-alt-text-autofill' ); ?></label>
 						<label class="tet-alt-inline"><input type="radio" name="source" value="ai" <?php checked( $ai && 'ai' === Tet_Alt_Settings::get( 'source' ) ); ?> <?php disabled( ! $ai ); ?> /> <?php esc_html_e( 'AI', 'image-alt-text-autofill' ); ?></label>
+						<div class="notice notice-warning inline tet-alt-cost" data-tet-alt-show="source=ai" <?php echo ( $ai && 'ai' === Tet_Alt_Settings::get( 'source' ) ) ? '' : 'hidden'; ?>>
+							<p><strong><?php esc_html_e( 'AI can cost money.', 'image-alt-text-autofill' ); ?></strong> <?php echo esc_html( Tet_Alt_Settings::cost_text() ); ?></p>
+						</div>
 						<?php if ( ! $ai ) : ?>
 							<p class="description"><a href="<?php echo esc_url( self::url( array( 'tab' => 'settings' ) ) ); ?>"><?php esc_html_e( 'Why is AI not available?', 'image-alt-text-autofill' ); ?></a></p>
 						<?php endif; ?>

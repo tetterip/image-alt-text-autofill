@@ -7,6 +7,7 @@ All notable changes to this project are documented here. The format follows [Kee
 ### Added
 - Alt text from a template (`{filename}`, `{title}`, `{caption}`, `{parent}`, `{site}`); file names are cleaned of sizes, WordPress suffixes and camera names such as `IMG_1234`.
 - AI descriptions through the WordPress 7.0 AI Client (provider and key in Settings → Connectors), in the site language, with the post / product title as context; falls back to the template.
+- "Who can use AI": only the chosen roles (administrators and editors by default) send images to the AI; others get the template. A cost notice appears wherever AI is chosen, and bulk AI runs ask for confirmation with the number of images.
 - Alt text written on upload, and added to images shown without one on the site.
 - Bulk page with preview, scopes (missing / automatic / all) and progress; replaced alt texts are kept.
 - Media Library column, Generate buttons, bulk action and a button in the media modal.

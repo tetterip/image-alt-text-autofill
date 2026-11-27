@@ -80,6 +80,12 @@ class Tet_Alt_Generator {
 		$source = '' !== $source ? $source : (string) Tet_Alt_Settings::get( 'source' );
 		$note   = '';
 
+		// A role that may not use AI gets the template, whatever "If AI fails" says: AI didn't fail, it wasn't tried.
+		if ( 'ai' === $source && ! Tet_Alt_AI::user_can() ) {
+			$source = 'template';
+			$note   = __( 'Your user role is not allowed to use AI on this site, so the template was used.', 'image-alt-text-autofill' );
+		}
+
 		if ( 'ai' === $source ) {
 			$alt = Tet_Alt_AI::describe( $id );
 			if ( ! is_wp_error( $alt ) ) {

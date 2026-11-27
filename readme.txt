@@ -38,6 +38,10 @@ This plugin does not contact any service itself; the request goes through WordPr
 
 Only for AI descriptions. Install a provider plugin (for example "AI Provider for OpenAI") and enter the key in Settings → Connectors. The template works without anything.
 
+= Does AI cost money? =
+
+This plugin is free and adds no charge. The AI provider you set up bills your own API key for each image described, at its own prices. Set a spending limit in your provider account, and choose under Settings → "Who can use AI" which user roles may trigger AI requests (administrators and editors by default).
+
 = Will it overwrite alt texts I wrote? =
 
 No, unless you pick "All images" in the bulk tool. Editing an alt text by hand marks it as yours.

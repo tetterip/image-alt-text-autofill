@@ -58,6 +58,28 @@ class Tet_Alt_AI {
 	}
 
 	/**
+	 * Whether the current user may spend AI requests (setting "Who can use AI").
+	 * WP-CLI and cron have no user and are trusted: only an administrator can start them.
+	 */
+	public static function user_can(): bool {
+		$user = wp_get_current_user();
+		if ( ( defined( 'WP_CLI' ) && WP_CLI ) || wp_doing_cron() ) {
+			$can = true;
+		} elseif ( ! $user->exists() ) {
+			$can = false;
+		} else {
+			$can = user_can( $user, 'manage_options' ) || (bool) array_intersect( (array) $user->roles, (array) Tet_Alt_Settings::get( 'ai_roles' ) );
+		}
+		/**
+		 * Filters whether the current user may use AI.
+		 *
+		 * @param bool    $can  Allowed.
+		 * @param WP_User $user Current user (ID 0 in WP-CLI and cron).
+		 */
+		return (bool) apply_filters( 'tet_alt_ai_user_can', $can, $user );
+	}
+
+	/**
 	 * Describes an attachment.
 	 *
 	 * @param int $id Attachment ID.
@@ -66,6 +88,9 @@ class Tet_Alt_AI {
 	public static function describe( int $id ) {
 		if ( ! self::available() ) {
 			return new WP_Error( 'tet_alt_ai_unavailable', __( 'No AI provider that can read images is set up.', 'image-alt-text-autofill' ) );
+		}
+		if ( ! self::user_can() ) {
+			return new WP_Error( 'tet_alt_ai_not_allowed', __( 'Your user role is not allowed to use AI on this site.', 'image-alt-text-autofill' ) );
 		}
 		$image = self::image_data( $id );
 		if ( is_wp_error( $image ) ) {
