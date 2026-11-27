@@ -51,6 +51,8 @@ readme.txt                        WordPress.org readme (Stable tag, External ser
   (generate: `edit_post`; bulk/settings: `manage_options`).
 - Prefix `tet_alt_` / `Tet_Alt_` / `TET_ALT_`; text domain `image-alt-text-autofill`.
 - `Tet_Alt_Admin::PLUGIN_TITLE` ("Image Alt Text Autofill") is never translated (a name).
+- No `load_plugin_textdomain()` (Plugin Check flags it): WordPress loads translations itself, from WordPress.org language
+  packs and, since 6.8, from the bundled `languages/` via the `Domain Path` header.
 - After changing strings: add Greek to `tools/i18n/el.mjs`, run `node tools/i18n/build.mjs`.
 - Bump `Version:` (header), `Stable tag` (readme.txt) and `CHANGELOG.md` together. GitHub release: Actions → Release → Run
   workflow (cloud sessions can't push tags). WordPress.org: SVN `trunk` + `tags/X.Y.Z` (after approval).

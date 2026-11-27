@@ -30,13 +30,8 @@ require_once TET_ALT_PATH . 'includes/class-tet-alt-generator.php';
 require_once TET_ALT_PATH . 'includes/class-tet-alt-media.php';
 require_once TET_ALT_PATH . 'includes/class-tet-alt-admin.php';
 
-// Load translations on init (avoids the WP 6.7+ just-in-time loading notice).
-add_action(
-	'init',
-	function () {
-		load_plugin_textdomain( 'image-alt-text-autofill', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-	}
-);
+// Translations: WordPress loads them by itself (WordPress.org language packs; since 6.8 also the bundled
+// languages/ folder through the Domain Path header), so there is no load_plugin_textdomain() call.
 
 // WooCommerce: works without it; declare HPOS compatibility so WooCommerce doesn't warn (no order data is touched).
 add_action(
