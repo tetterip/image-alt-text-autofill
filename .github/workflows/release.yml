@@ -18,7 +18,7 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Get version
         id: version
@@ -43,7 +43,7 @@ jobs:
           zip -r "image-alt-text-autofill-${{ steps.version.outputs.VERSION }}.zip" image-alt-text-autofill/
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: v${{ steps.version.outputs.VERSION }}
           target_commitish: ${{ github.sha }}
