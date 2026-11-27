@@ -1,0 +1,365 @@
+# Translation template for Smart Alt Text.
+# Copyright (C) ttrp.gr
+# This file is distributed under the GPL-2.0+ license.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Smart Alt Text\n"
+"Report-Msgid-Bugs-To: https://ttrp.gr\n"
+"POT-Creation-Date: 2026-09-25 12:00+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: tet-smart-alt-text\n"
+
+#: includes/class-tet-alt-admin.php:46 includes/class-tet-alt-admin.php:140
+msgid "Settings"
+msgstr ""
+
+#. translators: 1: images done, 2: images in total.
+#: includes/class-tet-alt-admin.php:114
+msgid "%1$d of %2$d images"
+msgstr ""
+
+#. translators: 1: images done, 2: images in total.
+#: includes/class-tet-alt-admin.php:115
+msgid "No images match. Nothing to do."
+msgstr ""
+
+#. translators: 1: images done, 2: images in total.
+#: includes/class-tet-alt-admin.php:116
+msgid "Finished."
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:117
+msgid "Stopped."
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:118
+msgid "The request failed. Check your connection and try again."
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:119
+msgid "Saved"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:120 includes/class-tet-alt-admin.php:217
+msgid "Preview"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:121
+msgid "Kept"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:122
+msgid "Error"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:123 includes/class-tet-alt-admin.php:199 includes/class-tet-alt-media.php:168 includes/class-tet-alt-settings.php:153
+msgid "AI"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:124 includes/class-tet-alt-admin.php:198 includes/class-tet-alt-settings.php:130
+msgid "Template"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:125
+msgid "This replaces every alt text, including ones written by people. Continue?"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:139
+msgid "Bulk generate"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:177
+msgid "Images"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:178
+msgid "Without alt text"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:179
+msgid "Automatic (template)"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:180
+msgid "Written by AI"
+msgstr ""
+
+#. translators: %s: number of images.
+#: includes/class-tet-alt-admin.php:191
+msgid "Use all images instead"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:196
+msgid "Write with"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:201
+msgid "Why is AI not available?"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:206
+msgid "Which images"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:209
+msgid "Only those without alt text"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:210
+msgid "Also replace automatic (template) alt texts, e.g. with AI ones"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:211
+msgid "All images, including alt texts written by people"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:213
+msgid "A replaced alt text is kept in the image's data, so it is never lost."
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:218
+msgid "Only show what would be written, save nothing"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:222
+msgid "Start"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:223
+msgid "Stop"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:227
+msgid "Keep this page open while it runs. With AI, every image is one request to your provider."
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:233
+msgid "Image"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:234 includes/class-tet-alt-media.php:142
+msgid "Alt text"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:235
+msgid "Result"
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:312
+msgid "You are not allowed to do this."
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:382
+msgid "Smart Alt Text writes descriptions (alt text) for the images in the media library, for visitors who use screen readers and for search engines."
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:383
+msgid "Without AI, it works only with data already on this site (file names and titles) and sends nothing anywhere."
+msgstr ""
+
+#: includes/class-tet-alt-admin.php:384
+msgid "If AI descriptions are turned on, each image that gets a description is sent, with the site name and the title of the page or product it belongs to, to the AI provider the site owner set up in WordPress (Settings → Connectors). If an image shows people, that may be personal data; the provider's own privacy policy applies to what it receives. Visitors' data is never sent."
+msgstr ""
+
+#. translators: %s: number of images.
+#: includes/class-tet-alt-admin.php:189
+msgid "%s image selected in the Media Library."
+msgid_plural "%s images selected in the Media Library."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-tet-alt-ai.php:68
+msgid "No AI provider that can read images is set up."
+msgstr ""
+
+#: includes/class-tet-alt-ai.php:103
+msgid "The AI returned no description."
+msgstr ""
+
+#: includes/class-tet-alt-ai.php:189 includes/class-tet-alt-ai.php:202
+msgid "The image file was not found."
+msgstr ""
+
+#: includes/class-tet-alt-ai.php:194
+msgid "This image type cannot be sent to the AI (only JPEG, PNG, GIF and WebP)."
+msgstr ""
+
+#: includes/class-tet-alt-ai.php:198
+msgid "The image is too large to send to the AI."
+msgstr ""
+
+#: includes/class-tet-alt-generator.php:78
+msgid "This attachment is not an image."
+msgstr ""
+
+#: includes/class-tet-alt-generator.php:96
+msgid "Nothing to build an alt text from (the file name says nothing and the image is not attached to a post)."
+msgstr ""
+
+#: includes/class-tet-alt-media.php:153 includes/class-tet-alt-media.php:239
+msgid "Missing"
+msgstr ""
+
+#: includes/class-tet-alt-media.php:156 includes/class-tet-alt-media.php:240
+msgid "Regenerate"
+msgstr ""
+
+#: includes/class-tet-alt-media.php:156
+msgid "Generate"
+msgstr ""
+
+#: includes/class-tet-alt-media.php:171
+msgid "Auto"
+msgstr ""
+
+#: includes/class-tet-alt-media.php:178 includes/class-tet-alt-media.php:218
+msgid "Generate alt text"
+msgstr ""
+
+#: includes/class-tet-alt-media.php:236
+msgid "Writing…"
+msgstr ""
+
+#: includes/class-tet-alt-media.php:237
+msgid "Done"
+msgstr ""
+
+#: includes/class-tet-alt-media.php:238
+msgid "Could not generate the alt text."
+msgstr ""
+
+#: includes/class-tet-alt-media.php:241
+msgid "Replace the current alt text?"
+msgstr ""
+
+#: includes/class-tet-alt-media.php:264
+msgid "You are not allowed to edit this image."
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:117
+msgid "How alt text is written"
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:120
+msgid "Source"
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:123
+msgid "Template (file name, titles), no external service"
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:124
+msgid "AI: describe the image with the AI provider set up in WordPress"
+msgstr ""
+
+#. translators: %s: list of template tags such as {filename}, {title}.
+#: includes/class-tet-alt-settings.php:136
+msgid "Tags: %s. A separator next to an empty tag is left out."
+msgstr ""
+
+#. translators: %s: list of template tags such as {filename}, {title}.
+#: includes/class-tet-alt-settings.php:138
+msgid "{filename} is the file name in words, without sizes or camera names such as IMG_1234. {parent} is the post, page or product the image was uploaded to."
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:140
+msgid "If the template gives nothing, use the title of the post, page or product the image belongs to"
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:144
+msgid "Maximum length"
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:147
+msgid "characters"
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:148
+msgid "Screen readers handle short alt texts best; 125 is the usual advice."
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:156
+msgid "Context"
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:157
+msgid "Send the site name and the title of the post, page or product with the image, for more specific descriptions"
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:160
+msgid "Extra instructions"
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:162
+msgid "e.g. We sell handmade ceramics; mention the colour and the glaze."
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:163
+msgid "Optional. Added to the instructions the AI gets. The alt text is always written in the language of the site."
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:167
+msgid "If AI fails"
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:168
+msgid "Use the template instead (AI texts can still replace it later)"
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:172
+msgid "When"
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:175
+msgid "On upload"
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:176
+msgid "Write the alt text of new images when they are uploaded, if it is empty"
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:179
+msgid "On the site"
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:181
+msgid "Add a template alt text to images shown without one (nothing is saved, no AI)"
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:182
+msgid "Treat an empty alt=\"\" as missing"
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:183
+msgid "alt=\"\" marks a decorative image that screen readers skip. Untick this if your editors set it on purpose."
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:200
+msgid "An AI provider that can read images is set up."
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:201
+msgid "With AI, each image is sent to that provider to be described. The provider may charge for each request."
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:205
+msgid "AI needs WordPress 7.0 or newer."
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:206
+msgid "AI is turned off on this site (WP_AI_SUPPORT or the wp_supports_ai filter)."
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:207
+msgid "No AI provider that can read images is set up yet."
+msgstr ""
+
+#: includes/class-tet-alt-settings.php:211
+msgid "Set one up in Settings → Connectors"
+msgstr ""

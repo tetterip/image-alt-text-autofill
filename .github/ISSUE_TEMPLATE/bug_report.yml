@@ -1,0 +1,50 @@
+name: Bug report
+description: Something doesn't work as it should.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! **Security problems go to info@ttrp.gr, not here.**
+  - type: input
+    id: plugin-version
+    attributes:
+      label: Plugin version
+      placeholder: "e.g. 0.1.1"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: WordPress / PHP versions (and AI provider, if used)
+      placeholder: "e.g. WordPress 7.0, PHP 8.2, AI Provider for OpenAI"
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to …
+        2. Click …
+        3. See …
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Errors or logs
+      description: PHP errors, browser console errors or debug log, if any. Remove keys, passwords and customer data first.
+      render: text
+  - type: textarea
+    id: other-plugins
+    attributes:
+      label: Theme and other plugins
+      description: Theme, page builder or plugins that may be involved (caching, page builders, image optimisers, other SEO/alt text plugins).

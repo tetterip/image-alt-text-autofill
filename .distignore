@@ -1,0 +1,9 @@
+/.git
+/.github
+/tests
+/tools
+.gitattributes
+.gitignore
+.distignore
+CLAUDE.md
+CONTRIBUTING.md
